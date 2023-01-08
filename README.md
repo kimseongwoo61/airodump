@@ -12,7 +12,7 @@
     
     ```bash
     shdo python airodump.py <무선랜 이름>
-    ```
+    ```  
     
 
   
