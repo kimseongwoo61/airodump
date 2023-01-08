@@ -4,13 +4,7 @@ Created on Thu Jan  5 17:30:21 2023
 
 @author: kimse
 
-BSSID, Beacons=?, (#Data=?), (ENC=?), ESSID, (PWR=atenna signal) 
-"""
-
-
-import socket, sys, os
-
-PACKET_INFO = []
+BSSID, Beacons=?, (#Data=?), (ENC=?), ESSID, (PWR=atenna signal), ENC, CH
 
 
 def analyzer_80211(pkt, ch, interface_name):
