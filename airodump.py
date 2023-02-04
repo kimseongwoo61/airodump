@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jan  5 17:30:21 2023
+Created on Sat Feb  4 16:00:40 2023
 
 @author: kimse
-BSSID, Beacons=?, (#Data=?), (ENC=?), ESSID, (PWR=atenna signal), ENC, CH
 """
 import socket
 import sys
@@ -20,7 +19,7 @@ def analyzer_80211(pkt, ch, interface_name):
         
     
     if(packetInfo.Type == b'\x80'):
-        for i in PACKET_INFO:
+        for i in packetInfo:
             if(packetInfo.BSSID == i[0]):
                 i[1] += 1
                 i[4] = packetInfo.PWR
@@ -28,7 +27,7 @@ def analyzer_80211(pkt, ch, interface_name):
                 break
             
         if(flag == 0):
-            PACKET_INFO.append(temp)
+            packetInfo.append(temp)
             #PACKET_INFO.sort(key=lambda x:x[5])
             os.system("clear")
              
@@ -36,7 +35,7 @@ def analyzer_80211(pkt, ch, interface_name):
             print("{:<22}{:<11}{:<9}{:<22}{:<9}{:<10}{:<9}{}"
                   .format("BSSID", "Beacons", "#Data", "ESSID", "PWR", "ENC", "CH",CLR))
             
-            for i in PACKET_INFO:
+            for i in packetInfo:
                 if(i[3] == ''):
                     print("{:<22}{:<11}{:<9}{:<22}{:<9}{:<17}{:<9}{}"
                           .format(i[0], i[1], i[2], '????', i[4], i[5], i[6], CLR))
@@ -48,7 +47,7 @@ def analyzer_80211(pkt, ch, interface_name):
         
         
     elif(packetInfo.Type == b'\x88'):
-        for i in PACKET_INFO:
+        for i in packetInfo:
             if(packetInfo.BSSID == i[0]):
                 i[2] += 1
                 i[4] = packetInfo.PWR
@@ -153,4 +152,3 @@ class packet802():
 
 
 printInterface(sys.argv[1])
-
