@@ -5,6 +5,9 @@ Created on Thu Jan  5 17:30:21 2023
 @author: kimse
 BSSID, Beacons=?, (#Data=?), (ENC=?), ESSID, (PWR=atenna signal), ENC, CH
 """
+import socket
+import sys
+import os
 
 def analyzer_80211(pkt, ch, interface_name):
     flag = 0
